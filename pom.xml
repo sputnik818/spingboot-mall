@@ -35,7 +35,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>rutime</scope>
-            <version>8.0.28</version>
+            <version>8.0.22</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
