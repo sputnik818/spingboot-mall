@@ -50,7 +50,17 @@ public class ProductController {
         Product updProduct = productService.getProductById(productId);
 
         return ResponseEntity.status(HttpStatus.OK).body(updProduct);
+    }
 
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<?>deleteProduct(@PathVariable Integer productId){
+        //PreCheck if the product exists or not
+        Product product = productService.getProductById(productId);
+        if(product == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
+        productService.deleteProductById(productId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
