@@ -1,5 +1,6 @@
 package com.sputnik.springbootmall.controller;
 
+import com.sputnik.springbootmall.constant.ProductCategory;
 import com.sputnik.springbootmall.dao.ProductDao;
 import com.sputnik.springbootmall.dto.ProductRequest;
 import com.sputnik.springbootmall.model.Product;
@@ -19,8 +20,11 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(){
-        List<Product> productList = productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+    ){
+        List<Product> productList = productService.getProducts(category, search);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
 
